@@ -7,6 +7,6 @@ const inputEl=document.querySelector("#input-el");
 
 
 buttonEl.addEventListener("click",function (){
-    console.log("Button clicked!");
+    myLead.push("www.awesomelead.com");
 });
 
