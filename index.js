@@ -12,8 +12,13 @@ buttonEl.addEventListener("click",function (){
     console.log(myLead);
 });
 
+let listItems="";
 for (let i = 0; i<myLead.length; i++){
-    ulEl.innerHTML+="<li>" + myLead[i] + "</li>";
+    // let liEl = document.createElement("li");
+    // liEl.textContent=myLead[i];
+    // ulEl.append(liEl);
+    listItems+="<li>" + myLead[i] + "</li>";
 }
+ulEl.innerHTML=listItems;
 
 
