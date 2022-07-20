@@ -6,10 +6,21 @@ const inputEl=document.querySelector("#input-el");
 const ulEl=document.querySelector("#ul-el");
 const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLead"));
 const deleteBtn = document.querySelector("#delete-btn");
+const tabBtn =  document.querySelector("#tab-btn");
+
 if (leadsFromLocalStorage){
     myLead=leadsFromLocalStorage;
     render(myLead);
 }
+
+tabBtn.addEventListener("click",function (){
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        let Link = tabs[0].url;
+        myLead.push(Link);
+        localStorage.setItem("myLead", JSON.stringify(myLead));
+        render(myLead);
+    });
+});
 
 function render(Lead) {
     let listItems = "";
@@ -37,7 +48,6 @@ buttonEl.addEventListener("click",function (){
     inputEl.value="";
     localStorage.setItem("myLead",JSON.stringify(myLead));
     render(myLead);
-    console.log(localStorage.getItem("myLead") );
 });
 
 
